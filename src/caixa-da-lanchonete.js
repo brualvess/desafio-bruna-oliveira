@@ -13,6 +13,7 @@ class CaixaDaLanchonete {
         this.formasPagamento = ['dinheiro', 'debito', 'credito']
     }
     calcularValorDaCompra(metodoDePagamento, itens) {
+        let valorTotal = 0;
         const carrinhoVazio = itens.length === 0
 
         if (carrinhoVazio) {
@@ -51,7 +52,17 @@ class CaixaDaLanchonete {
             }
             valorTotal += itemCardapio.valor * quantidade;
         }
+        if (metodoDePagamento === 'dinheiro') {
+            valorTotal -= valorTotal * 0.05;
+            return `R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
+        } else if (metodoDePagamento === 'credito') {
+            valorTotal += valorTotal * 0.03;
+            return `R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
+        } else {
+            return `R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
+        }
     }
+
 }
 
 
