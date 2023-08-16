@@ -18,11 +18,19 @@ class CaixaDaLanchonete {
         if (carrinhoVazio) {
             return 'Não há itens no carrinho de compra!';
         }
-        
+    
         const pagamentoInvalido = !this.formasPagamento.includes(metodoDePagamento)
         if (pagamentoInvalido) {
             return 'Forma de pagamento inválida!';
         }
+        const sanduiche = itens.find(item => {
+            const [codigo] = item.split(',');
+            return codigo === 'sanduiche';
+        });
+        const cafe = itens.find(item => {
+            const [codigo] = item.split(',');
+            return codigo === 'cafe';
+        });
     }
 }
 
