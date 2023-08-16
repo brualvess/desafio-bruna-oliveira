@@ -12,9 +12,14 @@ class CaixaDaLanchonete {
         ]
         this.formasPagamento = ['dinheiro', 'debito', 'credito']
     }
-}
-calcularValorDaCompra(metodoDePagamento, itens) {
+    calcularValorDaCompra(metodoDePagamento, itens) {
+        const carrinhoVazio = itens.length === 0
 
+        if (carrinhoVazio) {
+            return 'Não há itens no carrinho de compra!';
+        }
+    }
 }
+
 
 export { CaixaDaLanchonete };
